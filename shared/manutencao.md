@@ -7,7 +7,7 @@ Mudanças de visual passam pelo sistema, nunca por ajuste manual em um post.
 | Peça | Fonte de verdade | No Figma |
 |---|---|---|
 | Motor | `motor/build.js` | nó `lib/LIGA_SOCIAL` (`726:2`) na página `Sistema — Social` (`721:2`) |
-| Cores | — | coleção `Liga / Social`, modos `Navy` (`721:0`) e `Claro` (`721:1`) |
+| Cores | — | coleção `Liga / Social`, modos `Azul 100` (`721:1`), `Azul 200` (`753:2`), `Azul 300` (`753:1`), `Azul 500` (`753:0`), `Azul 600` (`746:1`), `Azul 800` (`721:0`), `Azul 900` (`746:2`) e `Powder` (`746:0`). Só tons da paleta |
 | Tipografia | — | estilos `Social/*` (feed) e `Social Story/*` (stories) |
 | Marcas | — | `marca/liga` (`721:67`) e `marca/news` (`723:2`, com as propriedades "Tópico" e "Com tópico") |
 | Ícones | `ICONS` dentro de `motor/build.js` | — |
@@ -21,7 +21,7 @@ Mudanças de visual passam pelo sistema, nunca por ajuste manual em um post.
 3. `python scripts/publicar.py`: gera `scripts/.saida/publicar-<n>.js` (patch, se houver cache) e imprime o `chars` e o `hash` esperados.
 4. Cole cada arquivo, em ordem, como `code` de um `use_figma`. A última parte devolve `version`, `chars` e `hash`, que precisam bater com o esperado.
 5. `python scripts/publicar.py --confirm` para atualizar o cache.
-6. Remonte `carrossel-4x5/exemplo-plano.json` e `stories-9x16/exemplo-plano.json`, com `post.substituir` igual aos wrappers atuais (`742:15` e `742:338` na página `Produção — Social`). Compare os screenshots com o catálogo visual de arquétipos (`738:170`), que mostra todos os arquétipos em modo claro.
+6. Remonte `carrossel-4x5/exemplo-plano.json` e `stories-9x16/exemplo-plano.json`, com `post.substituir` igual aos wrappers atuais (`742:15` e `742:338` na página `Produção — Social`). Compare os screenshots com o catálogo visual de arquétipos (`754:848`, os 8 fundos da paleta) e o exemplo variado (`754:173`).
 
 Gotchas do Plugin API que o motor já trata:
 - Uma chamada `use_figma` aceita até 50 000 caracteres; a publicação completa vai em partes de 30 000.
@@ -34,6 +34,11 @@ Gotchas do Plugin API que o motor já trata:
 1. Baixe o SVG do Lucide (`https://cdn.jsdelivr.net/npm/lucide-static@1.52.0/icons/<nome>.svg`).
 2. Acrescente o conteúdo interno do `<svg>` (os `<path>`, `<circle>`…) ao objeto `ICONS` em `motor/build.js`, em ordem alfabética.
 3. Publique e atualize a lista em `carrossel-4x5/FORMAT.md`.
+
+## Adicionar um fundo ou uma forma
+
+- **Fundo:** só com tons da paleta da Liga (azul 100 a 900 e Powder; nunca Persian nem outro azul). Crie um modo novo na coleção `Liga / Social`, preencha as 17 variáveis (confira o contraste: texto ≥ 4,5:1, título ≥ 7:1 sempre que o tom permitir), registre o id em `CFG.modes`, o par de cores em `GRAD` e em `OPOSTO`; depois inclua o nome em `MODOS` e `OPOSTO` de `scripts/validar_plano.py`.
+- **Forma:** novo ramo em `motivo()` no motor (use `fill()` e `line()`, que aplicam a transparência no nó), o nome em `FORMAS` e `AUTO` do motor e em `FORMAS` do validador.
 
 ## Adicionar um arquétipo
 

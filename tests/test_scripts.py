@@ -225,3 +225,84 @@ class ImagensNoPlano(unittest.TestCase):
         p = copy.deepcopy(FEED); p["slides"][2]["imagem"] = {"asset": "sumiu"}
         E, _ = validar_plano.validate(p, self.MAN)
         self.assertTrue(any("não está em img/imagens.json" in e for e in E))
+
+
+class FundosFormasCitacoes(unittest.TestCase):
+    VAR = json.loads((ROOT / "carrossel-4x5" / "exemplo-variado.json").read_text(encoding="utf-8"))
+
+    def test_exemplo_variado_valida_sem_erro_nem_aviso(self):
+        E, W = validar_plano.validate(copy.deepcopy(self.VAR))
+        self.assertEqual((E, W), ([], []))
+
+    def test_modo_invalido(self):
+        p = copy.deepcopy(self.VAR); p["slides"][1]["modo"] = "rosa"
+        self.assertTrue(any("modo 'rosa' inválido" in e for e in errors(p)))
+
+    def test_alias_azul100(self):
+        p = copy.deepcopy(self.VAR); p["slides"][1]["modo"] = "azul100"
+        self.assertEqual(errors(p), [])
+
+    def test_forma_invalida(self):
+        p = copy.deepcopy(self.VAR); p["slides"][1]["forma"] = "estrela"
+        self.assertTrue(any("forma 'estrela' inválida" in e for e in errors(p)))
+
+    def test_variante_de_citacao_invalida(self):
+        p = copy.deepcopy(self.VAR); p["slides"][2]["variante"] = "gigante"
+        self.assertTrue(any("variante 'gigante'" in e for e in errors(p)))
+
+    def test_citacao_sem_fonte_bloqueia(self):
+        p = copy.deepcopy(self.VAR)
+        c = p["slides"][2]; c.pop("fonte"); c["cargo"] = "diretora"
+        self.assertTrue(any("citação sem fonte" in e for e in errors(p)))
+
+    def test_citacao_com_fonte_passa(self):
+        p = copy.deepcopy(self.VAR)
+        c = p["slides"][2]; c["cargo"] = "diretora"; c["fonte"] = "entrevista ao jornal X, 2026"
+        self.assertEqual(errors(p), [])
+
+    def test_avisa_post_todo_no_mesmo_fundo(self):
+        p = copy.deepcopy(self.VAR)
+        for s in p["slides"]:
+            s.pop("modo", None)
+        p["slides"][-1]["t"] = "fechamento"
+        _, W = validar_plano.validate(p)
+        self.assertTrue(any("mesmo fundo" in w for w in W))
+
+    def test_avisa_fundos_demais(self):
+        p = copy.deepcopy(self.VAR); p["slides"][2]["modo"] = "tinta"
+        _, W = validar_plano.validate(p)
+        self.assertTrue(any("fundos diferentes" in w for w in W))
+
+    def test_avisa_mesma_forma_em_sequencia(self):
+        p = copy.deepcopy(self.VAR); p["slides"][1]["forma"] = "aro"; p["slides"][2]["forma"] = "aro"
+        _, W = validar_plano.validate(p)
+        self.assertTrue(any("mesma forma decorativa" in w for w in W))
+
+
+class PaletaDaLiga(unittest.TestCase):
+    VAR = json.loads((ROOT / "carrossel-4x5" / "exemplo-variado.json").read_text(encoding="utf-8"))
+
+    def test_persian_e_rejeitado_com_orientacao(self):
+        p = copy.deepcopy(self.VAR); p["slides"][1]["modo"] = "persian"
+        es = errors(p)
+        self.assertTrue(any("'persian' não existe" in e and "azul500 ou azul600" in e for e in es))
+
+    def test_persian_no_post_tambem(self):
+        p = copy.deepcopy(self.VAR); p["post"]["modo"] = "persian"
+        self.assertTrue(any(e.startswith("post.") and "persian" in e for e in errors(p)))
+
+    def test_todos_os_tons_da_paleta_valem(self):
+        for modo in ("azul100", "azul200", "azul300", "azul500", "azul600", "azul800", "azul900", "powder", "navy", "claro", "tinta", "Azul 100", "azul-200"):
+            p = copy.deepcopy(self.VAR); p["slides"][1]["modo"] = modo
+            self.assertFalse(any("inválido" in e or "não existe" in e for e in errors(p)), modo)
+
+    def test_tons_que_nao_existem_na_paleta(self):
+        for modo in ("azul400", "azul700", "rosa", "verde"):
+            p = copy.deepcopy(self.VAR); p["slides"][1]["modo"] = modo
+            self.assertTrue(any("inválido" in e for e in errors(p)), modo)
+
+    def test_motor_nao_tem_persian_nem_cores_fora_da_paleta(self):
+        src = (ROOT / "motor" / "build.js").read_text(encoding="utf-8").lower()
+        self.assertNotIn("persian", src)
+        self.assertNotIn("1433bd", src)
+        self.assertNotIn("0f2896", src)

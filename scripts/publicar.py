@@ -82,19 +82,20 @@ def version_of(source: str) -> str:
 
 
 def patches(old: str, new: str) -> list[list[str]]:
+    """Trechos [antigo, novo] com contexto mínimo em caracteres (linhas longas, como a dos ícones, não entram inteiras)."""
     a, b = old.splitlines(keepends=True), new.splitlines(keepends=True)
     out = []
     for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
         if tag == "equal":
             continue
-        ctx = 1
-        while True:
-            lo, hi = max(0, i1 - ctx), min(len(a), i2 + ctx)
-            old_chunk = "".join(a[lo:hi])
-            if old_chunk and old.count(old_chunk) == 1:
+        pre, post = "".join(a[:i1]), "".join(a[i2:])
+        old_mid, new_mid = "".join(a[i1:i2]), "".join(b[j1:j2])
+        for c in range(0, 4000, 24):
+            before, after = pre[-c:] if c else "", post[:c]
+            chunk = before + old_mid + after
+            if chunk and old.count(chunk) == 1:
                 break
-            ctx += 1
-        out.append([old_chunk, "".join(a[lo:i1]) + "".join(b[j1:j2]) + "".join(a[i2:hi])])
+        out.append([chunk, before + new_mid + after])
     return out
 
 

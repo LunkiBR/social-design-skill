@@ -9,7 +9,7 @@ Os stories usam os mesmos arquétipos do carrossel ([carrossel-4x5/FORMAT.md](..
 | Item | Stories |
 |---|---|
 | Zona segura | x 96–984, y 270–1540. Acima e abaixo disso, a interface do Instagram cobre o conteúdo |
-| Cabeçalho | Marca em y = 286, 30% maior |
+| Cabeçalho | Marca em y = 286, em 1,8× |
 | Conteúdo | y 384 a 1444 |
 | Rodapé | Não há contador nem pista de arraste: a barra de progresso é nativa |
 | Escala | ~1,2× o feed: hook 128, título 104 (88 compacto), corpo 48/64, card 48 + 40, mínimo 32 |
@@ -18,6 +18,7 @@ Os stories usam os mesmos arquétipos do carrossel ([carrossel-4x5/FORMAT.md](..
 | Cartões | 3 a 7 por sequência |
 | Cartões de texto e fechamento | Centralizados na vertical |
 | Comparação | Painéis empilhados |
+| Fundos e formas | Os mesmos fundos (azul 100 a 900 e Powder), formas e variantes de citação do feed (`modo`, `forma`, `pos`, `variante`); em stories, formas e aspas crescem 15% |
 
 ## Stickers
 

@@ -1,0 +1,151 @@
+{
+  "formato": "carrossel-4x5",
+  "post": {
+    "titulo": "Guia: como escrever um prompt melhor (exemplo de variedade visual)",
+    "serie": "liga",
+    "modo": "azul100"
+  },
+  "pauta": {
+    "tema": "Como escrever um prompt melhor",
+    "gatilho": "Tema perene para quem está começando em IA",
+    "publico": "Estudantes de engenharia iniciantes em IA",
+    "objetivo": "Ensinar um método simples e fazer o leitor salvar o post",
+    "angulo": "Contexto vale mais que tamanho",
+    "arco": "A9",
+    "hook_tipo": "H7",
+    "promessa": "Aprender a dar contexto para obter respostas úteis",
+    "cta_tipo": "salvar",
+    "outliers": [],
+    "contribuicao_original": "Exemplos de estudantes da UFSCar (ilustrativos neste modelo)",
+    "hipotese": "Falas de estudantes e fundos variados aumentam salvamentos em relação a um guia só de texto"
+  },
+  "fontes": [],
+  "slides": [
+    {
+      "t": "capa",
+      "papel": "hook",
+      "variante": "tipografica",
+      "modo": "azul600",
+      "eyebrow": "Guia rápido",
+      "hook": "Seu prompt está ==fraco==?",
+      "apoio": "Quatro passos para respostas mais úteis.",
+      "alt": "Capa em azul: seu prompt está fraco? Quatro passos para respostas mais úteis."
+    },
+    {
+      "t": "statement",
+      "papel": "definicao",
+      "modo": "powder",
+      "forma": "aro",
+      "texto": "O modelo só sabe o que ==você conta==.",
+      "apoio": "Contexto separa resposta genérica de útil.",
+      "alt": "O modelo só sabe o que você conta para ele: contexto separa resposta genérica de resposta útil."
+    },
+    {
+      "t": "citacao",
+      "papel": "prova",
+      "texto": "Eu pedia 'explica derivadas' e recebia um resumo de livro. Sem contexto, a resposta era genérica.",
+      "autor": "Estudante do 2º ano",
+      "cargo": "depoimento ilustrativo",
+      "alt": "Depoimento ilustrativo de um estudante sobre respostas genéricas sem contexto.",
+      "fonte": "depoimento ilustrativo, exemplo do modelo"
+    },
+    {
+      "t": "cards",
+      "papel": "mecanismo",
+      "modo": "azul800",
+      "titulo": "O que contar ao modelo",
+      "itens": [
+        {
+          "icone": "user",
+          "titulo": "Quem você é",
+          "texto": "Curso, nível e para que vai usar."
+        },
+        {
+          "icone": "target",
+          "titulo": "O que você quer",
+          "texto": "A tarefa, em uma frase."
+        },
+        {
+          "icone": "file-text",
+          "titulo": "Como quer receber",
+          "texto": "Formato, tamanho e exemplo."
+        }
+      ],
+      "alt": "Três coisas para contar ao modelo: quem você é, o que quer e como quer receber."
+    },
+    {
+      "t": "citacao",
+      "papel": "prova",
+      "variante": "cartao",
+      "texto": "A IA não substitui o raciocínio: ela amplifica quem já sabe pensar.",
+      "autor": "Professora de Cálculo",
+      "cargo": "fala ilustrativa",
+      "alt": "Fala ilustrativa de uma professora: a IA amplifica quem já sabe pensar.",
+      "fonte": "depoimento ilustrativo, exemplo do modelo"
+    },
+    {
+      "t": "comparacao",
+      "papel": "exemplo",
+      "modo": "powder",
+      "titulo": "Pergunta solta ou com contexto",
+      "a": {
+        "rotulo": "Solta",
+        "texto": "Explique derivadas."
+      },
+      "b": {
+        "rotulo": "Com contexto",
+        "texto": "Sou do 2º ano de engenharia. Explique derivadas com um exemplo de física."
+      },
+      "veredito": "Exemplo ilustrativo: o contexto muda a resposta.",
+      "alt": "Comparação ilustrativa entre uma pergunta solta e uma pergunta com contexto sobre derivadas."
+    },
+    {
+      "t": "citacao",
+      "papel": "virada",
+      "variante": "balao",
+      "modo": "azul600",
+      "texto": "Só entendi derivadas quando pedi um exemplo de física.",
+      "autor": "Estudante de Engenharia",
+      "cargo": "depoimento ilustrativo",
+      "alt": "Depoimento ilustrativo: um estudante só entendeu derivadas ao pedir um exemplo de física.",
+      "fonte": "depoimento ilustrativo, exemplo do modelo"
+    },
+    {
+      "t": "numero",
+      "papel": "prova",
+      "modo": "azul800",
+      "forma": "circulos",
+      "valor": "4×",
+      "rotulo": "mais detalhes na resposta",
+      "texto": "Valor ilustrativo, só para mostrar o arquétipo de número.",
+      "fonte": "dado fictício de demonstração",
+      "alt": "Número ilustrativo: quatro vezes mais detalhes na resposta quando há contexto."
+    },
+    {
+      "t": "statement",
+      "papel": "sintese",
+      "aspas": true,
+      "forma": "pontos",
+      "texto": "Contexto antes de pergunta.",
+      "alt": "Síntese em aspas: contexto antes de pergunta."
+    },
+    {
+      "t": "fechamento",
+      "papel": "cta",
+      "modo": "azul600",
+      "titulo": "Salve para usar no próximo trabalho",
+      "corpo": "O método funciona em qualquer assistente de IA.",
+      "cta": "Salve este post",
+      "alt": "Fechamento em azul: salve este post para usar no próximo trabalho."
+    }
+  ],
+  "legenda": {
+    "texto": "Seu prompt está fraco? Quase sempre falta contexto. Neste guia, quatro passos para dizer ao modelo quem você é, o que quer e como quer receber a resposta, com exemplos de estudantes e uma comparação entre perguntas soltas e com contexto. Salve para usar no próximo trabalho.",
+    "hashtags": [
+      "#IA",
+      "#Prompt",
+      "#UFSCar",
+      "#Engenharia"
+    ]
+  }
+}

@@ -28,9 +28,13 @@ Os mascotes coloridos do post dos Dots são da OpenAI e pertencem só àquele po
 
 ## Visual
 
-- Modo `navy` (gradiente #0c1854 → #1e2f8a, acento Powder #c4e8ed): padrão, notícias, capas e fechamentos.
-- Modo `claro` (#f4f6fd → #eaeffc, acento #1433bd): tutoriais, guias, glossários e conteúdo para salvar. Capa e fechamento continuam navy para manter a grade do perfil coerente.
-- Um slide `respiro` usa o modo oposto ao do post, como pausa visual.
+A paleta de fundos é só os **azuis 100 a 900** (sem 400 e 700) e o **Powder**, todos da paleta da Liga e todos com o mesmo grid, a mesma tipografia e as mesmas marcas. Nada de outro azul.
+- `azul800` (ou `navy`; gradiente azul/800 → azul/600, acento Powder): a cara da série News, notícias.
+- `azul900`, `azul600`, `azul500`: tons escuros e médios para dado, ênfase e depoimento.
+- `azul100` (ou `claro`), `azul200`, `azul300`: tons claros para tutoriais, guias, glossários e conteúdo para salvar.
+- `powder` (#c4e8ed, texto azul/800): institucional, processo seletivo, respiro e destaque leve.
+
+O post tem um fundo de base e pode variar nos slides de foco, com formas decorativas translúcidas (aros, círculos, pontos, faixas, quadrados e a abertura da marca) e aspas grandes para falas. A marca no cabeçalho é grande (1,6× no feed). A grade do perfil continua reconhecível pela marca, pela tipografia e pelo acento. Veja o guia em [roteiro.md](roteiro.md#fundos-formas-e-aspas).
 
 ## Voz
 

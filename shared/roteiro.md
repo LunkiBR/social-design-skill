@@ -39,10 +39,24 @@ Constante: grade, escala tipográfica, cores, marca, rodapé, capa e fechamento.
 | Variedade | 8 slides ou mais: pelo menos 4 arquétipos diferentes no miolo |
 | Densidade | no máximo 2 slides densos (mais de 35 palavras) seguidos; um slide leve a cada 4 |
 | Elemento não textual | pelo menos 1 a cada 2 slides (ícone, número, imagem, gráfico, linha do tempo) |
-| Respiro | 0 em posts de até 6 slides; 1 em 7 a 10; nunca no slide 2, no penúltimo nem no último |
+| Respiro | 0 em posts de até 6 slides; 1 em 7 a 10; nunca no slide 2, no penúltimo nem no último (usa o fundo oposto ao do post) |
 | Slide 2 | segunda capa: autônomo, com a promessa ou o dado mais forte |
 | Penúltimo | `resumo` ou `statement` com a síntese, quando o arco pedir |
 | Último | `fechamento`, o único com CTA |
+
+## Fundos, formas e aspas
+
+O fundo azul-escuro é a base da série News, mas **não é o único**. Use os fundos e as formas como ferramenta de ritmo ([FORMAT.md](../carrossel-4x5/FORMAT.md#fundos-formas-e-aspas)).
+
+| Regra | Valor |
+|---|---|
+| Fundo de base | Pelo tipo de post: notícia `azul800`; tutorial, guia e glossário `azul100`; institucional e processo seletivo `powder`; dado e tom sério `azul900` |
+| Variar o fundo | Em 7 slides ou mais, use pelo menos 2 fundos e no máximo 4, **só da paleta** (azul 100 a 900 e Powder). O validador avisa nos dois casos e bloqueia qualquer outro |
+| Onde trocar | Nos slides de foco: citação, número, pergunta, respiro e fechamento. Slides densos (cards, passos, tabelas) ficam no fundo de base, para a leitura não oscilar |
+| Contraste entre vizinhos | Alterne claro e escuro de vez em quando: um slide `azul600` ou `powder` entre dois `azul100` ou `azul800` funciona como virada |
+| Formas | No máximo uma por slide; não repita a mesma forma em slides seguidos. Os slides de foco já ganham uma automática |
+| Aspas grandes | Sempre que alguém fala (pessoa, empresa, estudante), use `citacao`: `aspas` para frase curta e forte, `cartao` para fala média e `balao` para depoimento informal. Fala longa: corte com reticências entre colchetes |
+| Fonte da fala | Fala real tem fonte (`src` ou `fonte`). Inventada só como "exemplo ilustrativo". O validador bloqueia citação sem fonte |
 
 ## Texto
 
@@ -86,7 +100,7 @@ Pontue de 0 a 2. Publique com 20 ou mais de 24 e nenhum item com * em 0.
 | 6 | Exemplo concreto | Cena, número ou nome; fictício rotulado |
 | 7 | Transição | Cada slide abre a pergunta que o próximo responde |
 | 8 | Densidade | Mediana até 35 palavras, máximo 60, sem slide vazio |
-| 9 | Variedade e identidade | 4+ arquétipos no miolo, ritmo denso/leve, série correta |
+| 9 | Variedade e identidade | 4+ arquétipos no miolo, 2 a 4 fundos, ritmo denso/leve, série correta |
 | 10* | CTA único | Um CTA, no último slide e igual ao da legenda |
 | 11 | Tom | Acessível, sem medo nem exagero, "Liga" e nunca "LIA" |
 | 12 | Legenda | Primeira linha com palavra-chave, 30–80 palavras, 3–5 hashtags, alt em todos os slides |

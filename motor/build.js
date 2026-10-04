@@ -2,7 +2,7 @@
 // Fonte versionada deste arquivo; a cópia executável vive no nó 'lib/LIGA_SOCIAL' da página Sistema — Social (721:2).
 // O plano está descrito em carrossel-4x5/FORMAT.md e stories-9x16/FORMAT.md. Retorna IDs, palavras por slide e QA.
 const LIGA_SOCIAL = (() => {
-  const CFG = { collection: 'Liga / Social', modes: { navy: '721:0', claro: '721:1' }, marcas: { liga: '721:67', news: '723:2' }, page: 'Produção — Social' };
+  const CFG = { collection: 'Liga / Social', modes: { azul100: '721:1', azul200: '753:2', azul300: '753:1', azul500: '753:0', azul600: '746:1', azul800: '721:0', azul900: '746:2', powder: '746:0' }, marcas: { liga: '721:67', news: '723:2' }, page: 'Produção — Social' };
   const ICONS = {"arrow-down":"<path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/>","arrow-right":"<path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/>","book-open":"<path d=\"M12 5v16\"/><path d=\"M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z\"/>","bookmark":"<path d=\"M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z\"/>","bot":"<path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/>","brain":"<path d=\"M12 18V5\"/><path d=\"M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4\"/><path d=\"M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5\"/><path d=\"M17.997 5.125a4 4 0 0 1 2.526 5.77\"/><path d=\"M18 18a4 4 0 0 0 2-7.464\"/><path d=\"M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517\"/><path d=\"M6 18a4 4 0 0 1-2-7.464\"/><path d=\"M6.003 5.125a4 4 0 0 0-2.526 5.77\"/>","briefcase":"<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>","building-2":"<path d=\"M10 12h4\"/><path d=\"M10 8h4\"/><path d=\"M14 21v-3a2 2 0 0 0-4 0v3\"/><path d=\"M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2\"/><path d=\"M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16\"/>","calculator":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"/><line x1=\"8\" x2=\"16\" y1=\"6\" y2=\"6\"/><line x1=\"16\" x2=\"16\" y1=\"14\" y2=\"18\"/><path d=\"M16 10h.01\"/><path d=\"M12 10h.01\"/><path d=\"M8 10h.01\"/><path d=\"M12 14h.01\"/><path d=\"M8 14h.01\"/><path d=\"M12 18h.01\"/><path d=\"M8 18h.01\"/>","calendar":"<path d=\"M8 2v3\"/><path d=\"M16 2v3\"/><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/>","chart-column":"<path d=\"M3 3v16a2 2 0 0 0 2 2h16\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/>","check":"<path d=\"M20 6 9 17l-5-5\"/>","circle-check":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m16 9-5.5 5.5L8 12\"/>","circle-help":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/>","circle-x":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/><path d=\"m9 9 6 6\"/>","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/>","cloud":"<path d=\"M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z\"/>","code":"<path d=\"m16 18 6-6-6-6\"/><path d=\"m8 6-6 6 6 6\"/>","cpu":"<path d=\"M12 20v2\"/><path d=\"M12 2v2\"/><path d=\"M17 20v2\"/><path d=\"M17 2v2\"/><path d=\"M2 12h2\"/><path d=\"M2 17h2\"/><path d=\"M2 7h2\"/><path d=\"M20 12h2\"/><path d=\"M20 17h2\"/><path d=\"M20 7h2\"/><path d=\"M7 20v2\"/><path d=\"M7 2v2\"/><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/><rect x=\"8\" y=\"8\" width=\"8\" height=\"8\" rx=\"1\"/>","database":"<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\"/><path d=\"M3 5V19A9 3 0 0 0 21 19V5\"/><path d=\"M3 12A9 3 0 0 0 21 12\"/>","dollar-sign":"<line x1=\"12\" x2=\"12\" y1=\"2\" y2=\"22\"/><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"/>","eye":"<path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>","file-text":"<path d=\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"/><path d=\"M14 2v5a1 1 0 0 0 1 1h5\"/><path d=\"M10 9H8\"/><path d=\"M16 13H8\"/><path d=\"M16 17H8\"/>","flask-conical":"<path d=\"M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2\"/><path d=\"M6.453 15h11.094\"/><path d=\"M8.5 2h7\"/>","gauge":"<path d=\"m12 14 4-4\"/><path d=\"M3.34 19a10 10 0 1 1 17.32 0\"/>","git-branch":"<path d=\"M15 6a9 9 0 0 0-9 9V3\"/><circle cx=\"18\" cy=\"6\" r=\"3\"/><circle cx=\"6\" cy=\"18\" r=\"3\"/>","globe":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\"/><path d=\"M2 12h20\"/>","graduation-cap":"<path d=\"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z\"/><path d=\"M22 10v6\"/><path d=\"M6 12.5V16a6 3 0 0 0 12 0v-3.5\"/>","hand-coins":"<path d=\"M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17\"/><path d=\"m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\"/><path d=\"m2 16 6 6\"/><circle cx=\"16\" cy=\"9\" r=\"2.9\"/><circle cx=\"6\" cy=\"5\" r=\"3\"/>","hand-helping":"<path d=\"M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14\"/><path d=\"m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\"/><path d=\"m2 13 6 6\"/>","handshake":"<path d=\"m11 17 2 2a1 1 0 1 0 3-3\"/><path d=\"m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4\"/><path d=\"m21 3 1 11h-2\"/><path d=\"M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3\"/><path d=\"M3 4h8\"/>","heart":"<path d=\"M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5\"/>","history":"<path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/><path d=\"M12 7v5l4 2\"/>","image":"<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\" ry=\"2\"/><circle cx=\"9\" cy=\"9\" r=\"2\"/><path d=\"m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21\"/>","layers":"<path d=\"M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z\"/><path d=\"M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12\"/><path d=\"M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17\"/>","lightbulb":"<path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\"/><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/>","link":"<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"/><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"/>","list-checks":"<path d=\"M13 5h8\"/><path d=\"M13 12h8\"/><path d=\"M13 19h8\"/><path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/>","lock":"<rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/>","mail":"<path d=\"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7\"/><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>","medal":"<path d=\"M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15\"/><path d=\"M11 12 5.12 2.2\"/><path d=\"m13 12 5.88-9.8\"/><path d=\"M8 7h8\"/><circle cx=\"12\" cy=\"17\" r=\"5\"/><path d=\"M12 18v-2h-.5\"/>","megaphone":"<path d=\"M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z\"/><path d=\"M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14\"/><path d=\"M8 6v8\"/>","message-circle":"<path d=\"M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719\"/>","mic":"<path d=\"M12 19v3\"/><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"/><rect x=\"9\" y=\"2\" width=\"6\" height=\"13\" rx=\"3\"/>","newspaper":"<path d=\"M15 18h-5\"/><path d=\"M18 14h-8\"/><path d=\"M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2\"/><rect width=\"8\" height=\"4\" x=\"10\" y=\"6\" rx=\"1\"/>","party-popper":"<path d=\"M5.8 11.3 2 22l10.7-3.79\"/><path d=\"M4 3h.01\"/><path d=\"M22 8h.01\"/><path d=\"M15 2h.01\"/><path d=\"M22 20h.01\"/><path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\"/><path d=\"m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17\"/><path d=\"m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7\"/><path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\"/>","puzzle":"<path d=\"M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z\"/>","quote":"<path d=\"M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z\"/><path d=\"M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z\"/>","repeat":"<path d=\"m17 2 4 4-4 4\"/><path d=\"M3 11v-1a4 4 0 0 1 4-4h14\"/><path d=\"m7 22-4-4 4-4\"/><path d=\"M21 13v1a4 4 0 0 1-4 4H3\"/>","rocket":"<path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\"/><path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09\"/><path d=\"M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z\"/><path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05\"/>","scale":"<path d=\"M12 3v18\"/><path d=\"m19 8 3 8a5 5 0 0 1-6 0zV7\"/><path d=\"M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1\"/><path d=\"m5 8 3 8a5 5 0 0 1-6 0zV7\"/><path d=\"M7 21h10\"/>","school":"<path d=\"M14 21v-3a2 2 0 0 0-4 0v3\"/><path d=\"M18 4.933V21\"/><path d=\"m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6\"/><path d=\"m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11\"/><path d=\"M6 4.933V21\"/><circle cx=\"12\" cy=\"9\" r=\"2\"/>","search":"<path d=\"m21 21-4.34-4.34\"/><circle cx=\"11\" cy=\"11\" r=\"8\"/>","settings":"<path d=\"M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>","share-2":"<circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" x2=\"15.42\" y1=\"13.51\" y2=\"17.49\"/><line x1=\"15.41\" x2=\"8.59\" y1=\"6.51\" y2=\"10.49\"/>","shield-check":"<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/><path d=\"m9 12 2 2 4-4\"/>","smartphone":"<rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2\" ry=\"2\"/><path d=\"M12 18h.01\"/>","sparkles":"<path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"/><path d=\"M20 2v4\"/><path d=\"M22 4h-4\"/><circle cx=\"4\" cy=\"20\" r=\"2\"/>","target":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><circle cx=\"12\" cy=\"12\" r=\"6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/>","terminal":"<path d=\"M12 19h8\"/><path d=\"m4 17 6-6-6-6\"/>","trending-down":"<path d=\"M16 17h6v-6\"/><path d=\"m22 17-8.5-8.5-5 5L2 7\"/>","trending-up":"<path d=\"M16 7h6v6\"/><path d=\"m22 7-8.5 8.5-5-5L2 17\"/>","triangle-alert":"<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/><path d=\"M12 9v4\"/><path d=\"M12 17h.01\"/>","trophy":"<path d=\"M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2\"/><path d=\"M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2\"/><path d=\"M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3\"/><path d=\"M4 22h16\"/><path d=\"M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z\"/><path d=\"M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3\"/>","user":"<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/>","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/><path d=\"M16 3.128a4 4 0 0 1 0 7.744\"/><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/>","wand-sparkles":"<path d=\"m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72\"/><path d=\"m14 7 3 3\"/><path d=\"M5 6v4\"/><path d=\"M19 14v4\"/><path d=\"M10 2v2\"/><path d=\"M7 8H3\"/><path d=\"M21 16h-4\"/><path d=\"M11 3H9\"/>","wrench":"<path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\"/>","x":"<path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/>","zap":"<path d=\"M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z\"/>"};
   const GEO = {
     feed: { W: 1080, H: 1350, X: 96, CW: 888, HEAD: 96, CT: 200, CB: 1142, FOOT: 1206, SAFE: [96, 96, 984, 1254], gap: 24, block: 64, minFont: 28 },
@@ -13,12 +13,18 @@ const LIGA_SOCIAL = (() => {
     feed: { hook: 'Social/Hook', hookLongo: 'Social/Hook longo', numero: 'Social/Número', titulo: 'Social/Título', tituloC: 'Social/Título compacto', statement: 'Social/Statement', citacao: 'Social/Citação', lead: 'Social/Lead', destaque: 'Social/Destaque', corpo: 'Social/Corpo', cardT: 'Social/Card título', cardX: 'Social/Card texto', cta: 'Social/CTA', eyebrow: 'Social/Eyebrow', rodape: 'Social/Rodapé', nota: 'Social/Nota', chip: 'Social/Chip', valor: 'Social/Valor' },
     story: { hook: 'Social Story/Hook', hookLongo: 'Social Story/Título', numero: 'Social Story/Número', titulo: 'Social Story/Título', tituloC: 'Social Story/Título compacto', statement: 'Social Story/Statement', citacao: 'Social Story/Citação', lead: 'Social Story/Lead', destaque: 'Social Story/Lead', corpo: 'Social Story/Corpo', cardT: 'Social Story/Card título', cardX: 'Social Story/Card texto', cta: 'Social Story/CTA', eyebrow: 'Social Story/Eyebrow', rodape: 'Social Story/Nota', nota: 'Social Story/Nota', chip: 'Social Story/Card texto', valor: 'Social Story/Card título' }
   };
-  const GRAD = { navy: ['#0c1854', '#1e2f8a'], claro: ['#f4f6fd', '#eaeffc'] };
+  // só tons da paleta da Liga: azul 100 a 900 (sem 400 e 700) e Powder. Gradientes usam tons vizinhos.
+  const GRAD = { azul100: ['#f4f6fd', '#eaeffc'], azul200: ['#eaeffc', '#eaeffc'], azul300: ['#8b9fe8', '#8b9fe8'], azul500: ['#4b63ce', '#1e2f8a'], azul600: ['#1e2f8a', '#0c1854'], azul800: ['#0c1854', '#1e2f8a'], azul900: ['#060a1b', '#0c1854'], powder: ['#c4e8ed', '#c4e8ed'] };
+  const ALIAS = { claro: 'azul100', navy: 'azul800', escuro: 'azul800', tinta: 'azul900', ink: 'azul900' };
+  // fundo do respiro: o oposto do fundo do post
+  const OPOSTO = { azul800: 'powder', azul900: 'powder', azul600: 'azul100', azul500: 'azul100', azul300: 'azul900', azul200: 'azul800', azul100: 'azul600', powder: 'azul800' };
+  const FORMAS = ['aro', 'circulos', 'pontos', 'faixa', 'quadrados', 'abertura', 'meio'];
+  const AUTO = [['aro', 'dd'], ['circulos', 'de'], ['pontos', 'ed'], ['faixa', 'dd'], ['quadrados', 'de'], ['meio', 'dd'], ['abertura', 'ed']];
   // limites de palavras por slide (sem rodapé e cabeçalho): [alvo, teto]
-  const WORDS = { feed: { capa: [18, 24], miolo: [45, 60], leve: [15, 20], fechamento: [40, 50] }, story: { capa: [12, 16], miolo: [18, 25], leve: [12, 15], fechamento: [18, 25] } };
+  const WORDS = { feed: { capa: [18, 24], miolo: [45, 60], leve: [15, 20], citacao: [26, 34], fechamento: [40, 50] }, story: { capa: [12, 16], miolo: [18, 25], leve: [12, 15], citacao: [20, 28], fechamento: [18, 25] } };
   const LEVES = ['statement', 'respiro', 'numero', 'pergunta', 'citacao'];
 
-  let FMT = 'feed', G = GEO.feed, post, wrapper, col, slides = [], total = 0, LONG = new Set();
+  let FMT = 'feed', G = GEO.feed, post, wrapper, col, slides = [], total = 0, LONG = new Set(), formaN = 0;
   const V = {}, S = {};
   const hex = h => { const n = parseInt(h.slice(1), 16); return { r: (n >> 16 & 255) / 255, g: (n >> 8 & 255) / 255, b: (n & 255) / 255 }; };
 
@@ -108,17 +114,73 @@ const LIGA_SOCIAL = (() => {
     return f;
   }
 
+  // ---------- formas decorativas (camada 'motivo/*', atrás do conteúdo, sempre translúcidas) ----------
+  function rotate(n, cx, cy, deg) { const a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a); n.relativeTransform = [[c, s, cx - c * n.width / 2 - s * n.height / 2], [-s, c, cy + s * n.width / 2 - c * n.height / 2]]; }
+  async function motivo(f, kind, pos, soft) {
+    if (!FORMAS.includes(kind)) throw new Error('forma desconhecida: ' + kind + ' (use ' + FORMAS.join(', ') + ')');
+    const W = G.W, H = G.H, k = FMT === 'story' ? 1.15 : 1;
+    const [cx, cy, dx, dy] = { dd: [W, H, -1, -1], de: [W, 0, -1, 1], ed: [0, H, 1, -1], ee: [0, 0, 1, 1] }[pos] || [W, H, -1, -1];
+    const g = figma.createFrame(); g.name = 'motivo/' + kind; g.resize(W, H); g.fills = []; g.clipsContent = false; f.appendChild(g); g.x = 0; g.y = 0; f.insertChild(0, g);
+    const M = soft ? 0.7 : 1;
+    const fill = (n, op) => { n.fills = [paint('acento')]; n.opacity = op * M; g.appendChild(n); return n; };
+    const line = (n, sw, op) => { n.fills = []; n.strokes = [paint('acento')]; n.strokeWeight = sw; n.opacity = op * M; g.appendChild(n); return n; };
+    const circ = (d, x, y) => { const e = figma.createEllipse(); e.resize(d, d); e.x = x - d / 2; e.y = y - d / 2; return e; };
+    if (kind === 'aro') { line(circ(1180 * k, cx, cy), 130 * k, 0.12); line(circ(700 * k, cx, cy), 44 * k, 0.12); }
+    if (kind === 'circulos') { fill(circ(860 * k, cx, cy), 0.10); fill(circ(380 * k, cx + dx * 520 * k, cy + dy * 300 * k), 0.16); line(circ(150 * k, cx + dx * 250 * k, cy + dy * 820 * k), 14, 0.24); }
+    if (kind === 'pontos') {
+      const n = 9, sp = 60, x0 = dx > 0 ? 72 : W - 72 - (n - 1) * sp, y0 = dy > 0 ? (FMT === 'story' ? 330 : 200) : H - (FMT === 'story' ? 400 : 190) - (n - 1) * sp;
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) fill(circ(10, x0 + i * sp, y0 + j * sp), 0.32);
+    }
+    if (kind === 'faixa') {
+      const ang = dx * dy > 0 ? 28 : -28;
+      for (const [w, h, ox, oy, op] of [[1800, 240, 140, 190, 0.10], [1800, 84, 330, 440, 0.16]]) { const r = figma.createRectangle(); r.resize(w, h); r.cornerRadius = h / 2; fill(r, op); rotate(r, cx + dx * ox * k, cy + dy * oy * k, ang); }
+    }
+    if (kind === 'quadrados') {
+      const a = figma.createRectangle(); a.resize(520 * k, 520 * k); a.cornerRadius = 32; fill(a, 0.10); rotate(a, cx + dx * 60 * k, cy + dy * 60 * k, 20);
+      const b2 = figma.createRectangle(); b2.resize(280 * k, 280 * k); b2.cornerRadius = 32; line(b2, 8, 0.28); rotate(b2, cx + dx * 300 * k, cy + dy * 250 * k, 20);
+    }
+    if (kind === 'abertura') {
+      const logo = (await figma.getNodeByIdAsync(CFG.marcas.news)).findOne(n => n.name === 'Logo').clone(); logo.rescale(760 * k / logo.width); logo.opacity = 0.10; logo.name = 'abertura';
+      g.appendChild(logo); logo.x = dx < 0 ? W - logo.width * 0.7 : -logo.width * 0.3; logo.y = dy < 0 ? H - logo.height * 0.7 : -logo.height * 0.3;
+    }
+    if (kind === 'meio') {
+      const top = dy < 0; const y0 = top ? H - 440 * k : 440 * k;
+      fill(circ(1700 * k, W / 2, top ? y0 + 850 * k : y0 - 850 * k), 0.10); fill(circ(1160 * k, W / 2, top ? H - 260 * k + 580 * k : 260 * k - 580 * k), 0.08);
+    }
+    return g;
+  }
+  // aspas grandes para falas e citações: o glifo é recortado para ocupar só a altura visível
+  async function aspasGrandes(size, name = 'bloco/aspas') {
+    const t = await text('“', 'hook', 'acento', null, { nbsp: false, name: 'aspas' }); t.fontSize = size; t.lineHeight = { unit: 'PIXELS', value: size };
+    const box = figma.createFrame(); box.name = name; box.fills = []; box.clipsContent = true; box.resize(Math.round(size * 0.66), Math.round(size * 0.40));
+    box.appendChild(t); t.x = -Math.round(size * 0.05); t.y = -Math.round(size * 0.04); return box;
+  }
+  function iniciais(nome) { return String(nome).replace(/[^\p{L} ]/gu, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join(''); }
+  async function autor(b, size = 96) {
+    const a = al('HORIZONTAL', 'Atribuição', { itemSpacing: 24, counterAxisAlignItems: 'CENTER' });
+    if (b.foto) a.appendChild(await image(b.foto, size, size, { radius: size / 2 }));
+    else a.appendChild(badge(size, 'icone/fundo', await text(iniciais(b.autor) || '·', 'cardT', 'acento', null, { nbsp: false }), 'Avatar'));
+    const tx = al('VERTICAL', 'Nome', { itemSpacing: 4 }); tx.appendChild(await text(b.autor, 'cardT', 'texto/titulo', null, { nbsp: false })); if (b.cargo) tx.appendChild(await text(b.cargo, 'cardX', 'texto/apoio', null, { nbsp: false })); a.appendChild(tx); return a;
+  }
+
   // ---------- moldura ----------
-  function modeOf(b, def) { const m = b.modo || def || post.modo || 'navy'; return m === 'claro' ? 'claro' : 'navy'; }
+  function modeOf(b, def) {
+    let m = String(b.modo || def || post.modo || 'azul800').toLowerCase().replace(/[\s_/-]/g, ''); m = ALIAS[m] || m;
+    if (!CFG.modes[m]) throw new Error('modo desconhecido: ' + (b.modo || post.modo) + ' (use azul100, azul200, azul300, azul500, azul600, azul800, azul900 ou powder)');
+    return m;
+  }
   async function slide(kind, b, o = {}) {
     const i = slides.length + 1; const f = figma.createFrame(); f.resize(G.W, G.H); f.clipsContent = true;
     f.name = `${String(i).padStart(2, '0')} — ${kind}`; wrapper.appendChild(f);
-    let mode = modeOf(b, o.mode);
-    if (o.alt) mode = (post.modo === 'claro') ? 'navy' : 'claro';
+    let mode = o.force || modeOf(b, o.mode);
+    if (o.alt && !b.modo && !o.force) mode = OPOSTO[modeOf({}, null)] || 'powder';
     f.setExplicitVariableModeForCollection(col, CFG.modes[mode]);
     const [a, z] = GRAD[mode];
-    f.fills = [{ type: 'GRADIENT_LINEAR', gradientTransform: [[0, 1, 0], [-1, 0, 1]], gradientStops: [{ position: 0, color: { ...hex(a), a: 1 } }, { position: 1, color: { ...hex(z), a: 1 } }] }];
+    f.fills = a === z ? [{ type: 'SOLID', color: hex(a) }] : [{ type: 'GRADIENT_LINEAR', gradientTransform: [[0, 1, 0], [-1, 0, 1]], gradientStops: [{ position: 0, color: { ...hex(a), a: 1 } }, { position: 1, color: { ...hex(z), a: 1 } }] }];
     const rec = { frame: f, kind, t: b.t, mode, y: G.CT, bottom: G.CB, center: !!o.center, slot: null };
+    let forma = b.forma, pos = b.pos;
+    if (forma === undefined && o.auto && post.formas !== false) { const au = AUTO[formaN++ % AUTO.length]; forma = au[0]; pos = pos || au[1]; }
+    if (forma && forma !== 'nenhuma') await motivo(f, forma, pos || 'dd', !o.center);
     if (b.sticker && FMT === 'story') {
       const s = SLOTS[b.sticker]; if (!s) throw new Error('sticker desconhecido: ' + b.sticker);
       const slot = figma.createFrame(); slot.name = 'slot/' + b.sticker; slot.resize(s[2], s[3]); slot.x = s[0]; slot.y = s[1]; slot.fills = []; slot.strokes = [paint('acento')]; slot.dashPattern = [12, 12]; slot.strokeWeight = 2; slot.cornerRadius = 32; f.appendChild(slot); slot.visible = false;
@@ -131,7 +193,7 @@ const LIGA_SOCIAL = (() => {
     const comp = await figma.getNodeByIdAsync(post.serie === 'news' ? CFG.marcas.news : CFG.marcas.liga);
     const inst = comp.createInstance(); rec.frame.appendChild(inst); inst.name = 'Cabeçalho — marca';
     if (post.serie === 'news') { const p = {}; for (const k of Object.keys(comp.componentPropertyDefinitions)) p[k] = k.startsWith('Tópico') ? (post.topico || ' ') : !!post.topico; inst.setProperties(p); }
-    if (FMT === 'story') inst.rescale(1.3);
+    inst.rescale(FMT === 'story' ? 1.8 : 1.6);
     inst.x = G.X; inst.y = G.HEAD;
     if (b.data) { const d = await text(b.data, 'rodape', 'texto/apoio', null, { nbsp: false, name: 'Cabeçalho — data' }); rec.frame.appendChild(d); d.x = G.X + G.CW - d.width; d.y = G.HEAD + (inst.height - d.height) / 2; }
   }
@@ -164,7 +226,7 @@ const LIGA_SOCIAL = (() => {
   const LAY = {};
   LAY.capa = async (b) => {
     const v = b.variante || (b.imagem ? 'arte' : 'tipografica');
-    const rec = await slide('Capa ' + v, b, { mode: 'navy' }); rec.pista = b.pista; const f = rec.frame;
+    const rec = await slide('Capa ' + v, b, { force: v === 'imagem' ? 'azul800' : null, auto: false }); rec.pista = b.pista; const f = rec.frame;
     const long = words(b.hook) > 5 || String(b.hook).replace(/[*=]/g, '').length > 26;
     const blk = al('VERTICAL', 'Capa — hook + apoio', { itemSpacing: FMT === 'feed' ? 32 : 40 }); fixedW(blk, G.CW);
     if (b.eyebrow) blk.appendChild(await text(b.eyebrow, 'eyebrow', 'acento', G.CW, { nbsp: false }));
@@ -203,7 +265,8 @@ const LIGA_SOCIAL = (() => {
     return rec;
   };
   LAY.statement = async (b, alt) => {
-    const rec = await slide(alt ? 'Respiro' : 'Statement', b, { alt, center: true });
+    const rec = await slide(alt ? 'Respiro' : 'Statement', b, { alt, center: true, auto: true });
+    if (b.aspas) put(rec, await aspasGrandes(FMT === 'feed' ? 440 : 520), 24, 'aspas');
     if (b.eyebrow) put(rec, await text(b.eyebrow, 'eyebrow', 'acento', G.CW, { nbsp: false }), 0, 'eyebrow');
     put(rec, await text(b.texto, 'statement', 'texto/titulo', G.CW), 24, 'statement');
     if (b.apoio) put(rec, await text(b.apoio, 'corpo', 'texto/corpo', G.CW), 40, 'apoio');
@@ -212,7 +275,7 @@ const LIGA_SOCIAL = (() => {
   };
   LAY.respiro = async (b) => LAY.statement(b, true);
   LAY.numero = async (b) => {
-    const rec = await slide('Número', b, { center: true });
+    const rec = await slide('Número', b, { center: true, auto: true });
     if (b.eyebrow) put(rec, await text(b.eyebrow, 'eyebrow', 'acento', G.CW, { nbsp: false }), 0, 'eyebrow');
     put(rec, await text(b.valor, 'numero', 'acento', null, { nbsp: false, name: 'valor' }), 16, 'valor');
     if (b.rotulo) put(rec, await text(b.rotulo, 'tituloC', 'texto/titulo', G.CW), 16, 'rotulo');
@@ -221,13 +284,21 @@ const LIGA_SOCIAL = (() => {
     centerBlocks(rec, G.CT, rec.notaTop ? rec.notaTop - 32 : rec.bottom); return rec;
   };
   LAY.citacao = async (b) => {
-    const rec = await slide('Citação', b, { center: true });
-    const q = await text('“', 'hook', 'acento', null, { nbsp: false, name: 'aspas' }); q.textAutoResize = 'NONE'; q.resize(q.width, Math.round(q.height * 0.55)); put(rec, q, 0, 'aspas');
-    put(rec, await text(b.texto, 'citacao', 'texto/titulo', G.CW), 0, 'citacao');
-    const a = al('HORIZONTAL', 'Atribuição', { itemSpacing: 24, counterAxisAlignItems: 'CENTER' });
-    if (b.foto) { const ph = await image(b.foto, 96, 96, { radius: 48 }); a.appendChild(ph); }
-    const tx = al('VERTICAL', 'Nome', { itemSpacing: 4 }); tx.appendChild(await text(b.autor, 'cardT', 'texto/titulo', null, { nbsp: false })); if (b.cargo) tx.appendChild(await text(b.cargo, 'cardX', 'texto/apoio', null, { nbsp: false })); a.appendChild(tx);
-    put(rec, a, 48, 'autor');
+    const v = b.variante || 'aspas';
+    const rec = await slide('Citação ' + v, b, { center: true, auto: false });
+    if (v === 'cartao') {
+      const c = card('card', 56); c.itemSpacing = 16; fixedW(c, G.CW);
+      c.appendChild(await aspasGrandes(FMT === 'feed' ? 360 : 420)); c.appendChild(await text(b.texto, 'citacao', 'texto/titulo', G.CW - 112));
+      put(rec, c, 0, 'citacao'); put(rec, await autor(b), 48, 'autor');
+    } else if (v === 'balao') {
+      const c = card('destaque', 48); c.itemSpacing = 16; fixedW(c, G.CW); c.bottomLeftRadius = 8; c.strokeWeight = 3;
+      c.appendChild(await aspasGrandes(FMT === 'feed' ? 250 : 290)); c.appendChild(await text(b.texto, 'lead', 'texto/titulo', G.CW - 96));
+      put(rec, c, 0, 'citacao'); const a = await autor(b, 80); put(rec, a, 32, 'autor'); a.x = G.X + 24;
+    } else {
+      const nw = words(b.texto), tam = (nw <= 12 ? 780 : nw <= 20 ? 620 : 500) * (FMT === 'feed' ? 1 : 1.15);
+      put(rec, await aspasGrandes(tam), 0, 'aspas');
+      put(rec, await text(b.texto, 'citacao', 'texto/titulo', G.CW), 40, 'citacao'); put(rec, await autor(b), 48, 'autor');
+    }
     centerBlocks(rec); return rec;
   };
   async function iconCard(it, w, layout) {
@@ -350,7 +421,7 @@ const LIGA_SOCIAL = (() => {
     put(rec, l, G.block, 'barras'); return rec;
   };
   LAY.pergunta = async (b) => {
-    const rec = await slide('Pergunta', b, { center: true });
+    const rec = await slide('Pergunta', b, { center: true, auto: true });
     const q = await text('?', 'numero', 'acento', null, { nbsp: false, name: 'motivo/interrogacao' }); rec.frame.appendChild(q);
     q.fontSize = FMT === 'feed' ? 640 : 760; q.lineHeight = { unit: 'PERCENT', value: 100 }; q.opacity = 0.14; q.x = G.W - q.width * 0.58; q.y = Math.round((G.CT + G.CB) / 2 - q.height * 0.35);
     if (b.eyebrow) put(rec, await text(b.eyebrow, 'eyebrow', 'acento', G.CW, { nbsp: false }), 0, 'eyebrow');
@@ -360,7 +431,7 @@ const LIGA_SOCIAL = (() => {
     return rec;
   };
   LAY.definicao = async (b) => {
-    const rec = await slide('Definição', b);
+    const rec = await slide('Definição', b, { auto: true });
     put(rec, await text(b.eyebrow || 'Definição', 'eyebrow', 'acento', G.CW, { nbsp: false }), 0, 'eyebrow');
     put(rec, await text(b.termo, 'titulo', 'texto/titulo', G.CW), 16, 'termo');
     put(rec, await text(b.definicao, 'lead', 'texto/corpo', G.CW), G.gap, 'definicao');
@@ -374,7 +445,7 @@ const LIGA_SOCIAL = (() => {
     put(rec, l, G.block, 'itens'); return rec;
   };
   LAY.fechamento = async (b) => {
-    const rec = await slide('Fechamento', b, { mode: 'navy' }); await head(rec, b);
+    const rec = await slide('Fechamento', b, { auto: true }); await head(rec, b);
     if (b.destaque) { const c = card('destaque', 48); c.itemSpacing = 16; fixedW(c, G.CW); if (b.destaque.eyebrow) c.appendChild(await text(b.destaque.eyebrow, 'eyebrow', 'acento', G.CW - 96, { nbsp: false })); c.appendChild(await text(b.destaque.texto, 'destaque', 'texto/titulo', G.CW - 96)); put(rec, c, G.block, 'destaque'); }
     if (FMT === 'story' && b.sticker === 'link') {
       const a = al('VERTICAL', 'Chamada do link', { itemSpacing: 16, counterAxisAlignItems: 'CENTER' }); fixedW(a, G.CW);
@@ -427,7 +498,7 @@ const LIGA_SOCIAL = (() => {
       }
       for (const nd of s.children) if (nd.name.startsWith('bloco/') && nd.visible) { const lim = (slides[i] && slides[i].bottom) || g.CB; if (nd.y + nd.height > lim + 1 && !nd.name.startsWith('bloco/nota')) add(s.name, 'ERROR', 'G2 conteúdo passa do limite', `${nd.name.slice(6)} termina em y=${Math.round(nd.y + nd.height)} (limite ${lim})`); }
       const notas = s.children.filter(nd => nd.name.startsWith('bloco/nota')); for (const nt of notas) for (const nd of s.children) if (nd.name.startsWith('bloco/') && !nd.name.startsWith('bloco/nota') && nd.y + nd.height > nt.y - 24) add(s.name, 'ERROR', 'G2 conteúdo encosta na nota', nd.name.slice(6));
-      const cls = i === 0 ? 'capa' : (t === 'fechamento' ? 'fechamento' : (LEVES.includes(t) ? 'leve' : 'miolo')); const [alvo, teto] = WORDS[fmt][cls];
+      const cls = i === 0 ? 'capa' : (t === 'fechamento' ? 'fechamento' : t === 'citacao' ? 'citacao' : (LEVES.includes(t) ? 'leve' : 'miolo')); const [alvo, teto] = WORDS[fmt][cls];
       if (w > teto) add(s.name, 'ERROR', 'D1 palavras', `${w} > ${teto} (${cls})`); else if (w > alvo) add(s.name, 'WARNING', 'D1 palavras', `${w} > alvo ${alvo} (${cls})`);
       if (slides[i]) slides[i].words = w;
       const tt = s.children.find(x => x.name === 'bloco/titulo');
@@ -444,7 +515,7 @@ const LIGA_SOCIAL = (() => {
   }
 
   async function build(plan) {
-    post = plan.post; FMT = plan.formato === 'stories-9x16' ? 'story' : 'feed'; G = GEO[FMT]; slides = []; LONG = new Set(); total = plan.slides.length;
+    post = plan.post; FMT = plan.formato === 'stories-9x16' ? 'story' : 'feed'; G = GEO[FMT]; slides = []; LONG = new Set(); formaN = 0; total = plan.slides.length;
     await init();
     let page = post.pageId ? await figma.getNodeByIdAsync(post.pageId) : figma.root.children.find(p => p.name === CFG.page);
     if (!page) { page = figma.createPage(); page.name = CFG.page; }
@@ -459,6 +530,6 @@ const LIGA_SOCIAL = (() => {
     const issues = plan.skipQA ? [] : await qa(wrapper.id, FMT);
     return { pageId: page.id, wrapper: wrapper.id, formato: plan.formato, slides: slides.map(s => ({ id: s.frame.id, name: s.frame.name, modo: s.mode, palavras: s.words })), qa: issues };
   }
-  return { build, qa, icons: Object.keys(ICONS), version: '1.8' };
+  return { build, qa, icons: Object.keys(ICONS), version: '1.14' };
 })();
 return LIGA_SOCIAL;

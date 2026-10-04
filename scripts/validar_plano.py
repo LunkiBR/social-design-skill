@@ -29,8 +29,30 @@ BLOQUEIO_HOOK = ["você não vai acreditar", "chocante", "ninguém te conta", "r
 BLOQUEIO_CTA = ["marque 3", "marque três", "marque seus amigos", "marque um amigo"]
 PRONOMES_SOLTOS = ("ele ", "ela ", "isso ", "mas ", "então ", "eles ", "elas ")
 # palavras por slide (sem nota, fonte e rodapé): [alvo, teto], iguais aos do motor
-WORDS = {"feed": {"capa": (18, 24), "miolo": (45, 60), "leve": (15, 20), "fechamento": (40, 50)},
-         "story": {"capa": (12, 16), "miolo": (18, 25), "leve": (12, 15), "fechamento": (18, 25)}}
+WORDS = {"feed": {"capa": (18, 24), "miolo": (45, 60), "leve": (15, 20), "citacao": (26, 34), "fechamento": (40, 50)},
+         "story": {"capa": (12, 16), "miolo": (18, 25), "leve": (12, 15), "citacao": (20, 28), "fechamento": (18, 25)}}
+# só a paleta da Liga: azul 100 a 900 (sem 400 e 700) e Powder
+MODOS = {"azul100", "azul200", "azul300", "azul500", "azul600", "azul800", "azul900", "powder"}
+ALIAS_MODO = {"claro": "azul100", "navy": "azul800", "escuro": "azul800", "tinta": "azul900", "ink": "azul900"}
+OPOSTO = {"azul800": "powder", "azul900": "powder", "azul600": "azul100", "azul500": "azul100",
+          "azul300": "azul900", "azul200": "azul800", "azul100": "azul600", "powder": "azul800"}
+
+
+def modo_norm(m):
+    """Normaliza 'Azul 100', 'azul-100', 'azul/100', 'navy'… para o nome canônico (ou devolve o texto original)."""
+    if not m:
+        return m
+    k = re.sub(r"[\s_/-]", "", str(m).lower())
+    return ALIAS_MODO.get(k, k)
+
+
+def modo_erro(m):
+    if str(m).lower() == "persian":
+        return "o modo 'persian' não existe: a paleta é azul 100 a 900 e Powder (para um azul vivo use azul500 ou azul600)"
+    return f"modo {m!r} inválido (use {', '.join(sorted(MODOS))})"
+FORMAS = {"aro", "circulos", "pontos", "faixa", "quadrados", "abertura", "meio", "nenhuma"}
+POSICOES = {"dd", "de", "ed", "ee"}
+VARIANTES_CITACAO = {"aspas", "cartao", "balao"}
 REQUIRED = {
     "capa": ["hook"], "texto": ["titulo"], "statement": ["texto"], "respiro": ["texto"], "numero": ["valor"],
     "citacao": ["texto", "autor"], "cards": ["itens"], "passos": ["itens"], "timeline": ["itens"],
@@ -120,8 +142,8 @@ def validate(plan: dict, man: dict | None = None) -> tuple[list[str], list[str]]
             E.append(f"post.{k} ausente")
     if post.get("serie") not in (None, "news", "liga"):
         E.append("post.serie deve ser 'news' ou 'liga'")
-    if post.get("modo", "navy") not in ("navy", "claro"):
-        E.append("post.modo deve ser 'navy' ou 'claro'")
+    if post.get("modo") and modo_norm(post["modo"]) not in MODOS:
+        E.append("post." + modo_erro(post["modo"]))
 
     # pauta
     pauta = plan.get("pauta") or {}
@@ -216,8 +238,24 @@ def validate(plan: dict, man: dict | None = None) -> tuple[list[str], list[str]]
                 E.append(f"{tag}: sticker de link só no último ou penúltimo cartão")
             elif s["sticker"] == "contagem" and not s.get("data"):
                 E.append(f"{tag}: contagem regressiva exige 'data' real")
+        # fundo, forma e citação
+        for campo in ("modo",):
+            if s.get(campo) and modo_norm(s[campo]) not in MODOS:
+                E.append(f"{tag}: {modo_erro(s[campo])}")
+        if s.get("forma") and s["forma"] not in FORMAS:
+            E.append(f"{tag}: forma {s['forma']!r} inválida (use {', '.join(sorted(FORMAS - {'nenhuma'}))} ou 'nenhuma')")
+        if s.get("pos") and s["pos"] not in POSICOES:
+            E.append(f"{tag}: pos {s['pos']!r} inválido (use {', '.join(sorted(POSICOES))})")
+        if t == "citacao":
+            if s.get("variante", "aspas") not in VARIANTES_CITACAO:
+                E.append(f"{tag}: variante {s['variante']!r} inválida (use {', '.join(sorted(VARIANTES_CITACAO))})")
+            visivel_c = json.dumps({k: v for k, v in s.items() if k not in ("alt", "papel", "_w")}, ensure_ascii=False).lower()
+            if not (s.get("src") or s.get("fonte")) and "ilustrativ" not in visivel_c:
+                E.append(f"{tag}: citação sem fonte ('src' ou 'fonte'); não invente falas (ou rotule como 'exemplo ilustrativo')")
+            if words(s.get("texto", "")) > 30:
+                W.append(f"{tag}: citação com mais de 30 palavras; edite ou use reticências entre colchetes")
         # palavras
-        cls = "capa" if i == 1 else "fechamento" if t == "fechamento" else "leve" if t in FOCO else "miolo"
+        cls = "capa" if i == 1 else "fechamento" if t == "fechamento" else "citacao" if t == "citacao" else "leve" if t in FOCO else "miolo"
         alvo, teto = WORDS[F][cls]
         w = slide_words(s)
         if w > teto:
@@ -227,6 +265,26 @@ def validate(plan: dict, man: dict | None = None) -> tuple[list[str], list[str]]
         s["_w"] = w
 
     check_images(S, man or {}, E, W)
+
+    # variedade de fundos (o post não precisa ser todo da mesma cor)
+    base = modo_norm(post.get("modo") or "azul800")
+    efetivos = []
+    for i, s in enumerate(S, 1):
+        m = modo_norm(s.get("modo"))
+        if not m and s.get("t") == "respiro":
+            m = OPOSTO.get(base, "powder")
+        if s.get("t") == "capa" and s.get("variante") == "imagem":
+            m = "azul800"
+        efetivos.append(m or base)
+    distintos = set(efetivos)
+    if feed and n >= 7 and len(distintos) < 2:
+        W.append(f"todos os {n} slides no mesmo fundo ({base}); varie em pelo menos 2 fundos (respiro, número, citação e fechamento são bons lugares)")
+    if len(distintos) > 4:
+        W.append(f"{len(distintos)} fundos diferentes no mesmo post; use no máximo 4 para manter o reconhecimento")
+    seguidas = [s.get("forma") for s in S]
+    for i in range(1, n):
+        if seguidas[i] and seguidas[i] != "nenhuma" and seguidas[i] == seguidas[i - 1]:
+            W.append(f"slides {i}–{i + 1}: a mesma forma decorativa ({seguidas[i]}) em sequência")
 
     # hook
     if n and S[0].get("hook"):
