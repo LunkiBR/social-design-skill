@@ -1,0 +1,26 @@
+{
+  "formato": "stories-9x16",
+  "post": {
+    "titulo": "OpenAI Dots — stories de divulgação",
+    "serie": "news",
+    "topico": "dev day",
+    "modo": "navy"
+  },
+  "pauta": {
+    "tema": "OpenAI Dots",
+    "publico": "Seguidores que ainda não viram o carrossel",
+    "objetivo": "Levar ao carrossel e medir a opinião sobre delegar tarefas a uma IA",
+    "angulo": "Você deixaria uma IA trabalhar por você?",
+    "arco": "S7",
+    "promessa": "Entender o que muda na sua rotina com os Dots",
+    "cta_tipo": "link",
+    "outliers": []
+  },
+  "slides": [
+    { "t": "capa", "variante": "arte", "hook": "OpenAI ==Dots==", "apoio": "A IA que trabalha depois que você fecha o chat.", "imagem": { "node": "528:542", "ajuste": "fit", "credito": "OpenAI" } },
+    { "t": "texto", "titulo": "Você deixa de pedir e passa a delegar", "corpo": "Define o objetivo uma vez. O Dot avança e te atualiza." },
+    { "t": "interacao", "sticker": "enquete", "titulo": "Você deixaria uma IA trabalhar por você?", "instrucao": "Vote na enquete acima" },
+    { "t": "post", "titulo": "O carrossel completo já está no feed", "origem": "742:46" },
+    { "t": "fechamento", "titulo": "Quer entender o que muda na sua rotina?", "sticker": "link", "cta": "Toque no link e veja o post" }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "formato": "carrossel-4x5",
+  "post": {
+    "titulo": "OpenAI Dots — exemplo do motor",
+    "serie": "news",
+    "topico": "dev day",
+    "modo": "navy"
+  },
+  "pauta": {
+    "tema": "OpenAI Dots, agentes que continuam trabalhando depois que você fecha o chat",
+    "gatilho": "Anúncio no DevDay da OpenAI",
+    "publico": "Estudantes de engenharia com pouca familiaridade com IA",
+    "objetivo": "Fazer o leitor entender o que muda na rotina dele e seguir a série News",
+    "angulo": "Como isso impacta o seu dia a dia",
+    "arco": "A2",
+    "hook_tipo": "H1",
+    "promessa": "Entender o que é um Dot e o que muda na sua rotina",
+    "cta_tipo": "seguir",
+    "outliers": [],
+    "contribuicao_original": "Exemplo ilustrativo de um dia de estudante com um Dot",
+    "hipotese": "O ângulo de impacto no dia a dia aumenta salvamentos e envios em relação a um explicador puro"
+  },
+  "fontes": [
+    { "id": "f1", "titulo": "OpenAI DevDay — anúncio dos Dots (VentureBeat)", "url": "https://venturebeat.com", "data": "2026-10-03" }
+  ],
+  "slides": [
+    {
+      "t": "capa", "papel": "hook", "variante": "arte",
+      "hook": "OpenAI\n==Dots==",
+      "apoio": "A IA que continua trabalhando depois que você fecha o chat.",
+      "pista": "Como isso muda o seu dia?",
+      "imagem": { "node": "528:542", "ajuste": "fit", "credito": "OpenAI" },
+      "alt": "Capa: OpenAI Dots, a IA que continua trabalhando depois que você fecha o chat."
+    },
+    {
+      "t": "texto", "papel": "definicao",
+      "titulo": "O que é um Dot?",
+      "corpo": "Um agente que recebe um objetivo, não só uma pergunta, e segue trabalhando quando você sai.",
+      "destaque": { "eyebrow": "Em uma frase", "texto": "Você delega um objetivo, e ele avança sozinho." },
+      "src": ["f1"],
+      "alt": "Definição: um Dot é um agente que recebe um objetivo e continua trabalhando quando você sai."
+    },
+    {
+      "t": "imagem", "papel": "prova",
+      "titulo": "O que foi mostrado no DevDay",
+      "imagem": { "node": "575:240", "ratio": 1.5, "credito": "OpenAI" },
+      "legenda": "Os Dots aparecem como colegas no seu chat.",
+      "fonte": "vídeo da OpenAI no DevDay",
+      "src": ["f1"],
+      "alt": "Trecho do vídeo da OpenAI mostrando os Dots no DevDay."
+    },
+    {
+      "t": "comparacao", "papel": "mecanismo",
+      "titulo": "Você deixa de pedir e passa a delegar",
+      "a": { "rotulo": "No chat, hoje", "texto": "Você pergunta, copia a resposta e, no dia seguinte, explica tudo de novo." },
+      "b": { "rotulo": "Com um Dot", "texto": "Você define o objetivo uma vez. Ele acompanha, avança e te atualiza." },
+      "veredito": "A OpenAI chama de “colega digital”.",
+      "src": ["f1"],
+      "alt": "Comparação entre usar o chat hoje e delegar um objetivo a um Dot."
+    },
+    {
+      "t": "timeline", "papel": "exemplo",
+      "titulo": "Um dia com um Dot",
+      "itens": [
+        { "marca": "09h", "titulo": "Você define o objetivo", "texto": "Manter o resumo das fontes do trabalho sempre atualizado." },
+        { "marca": "15h", "titulo": "Ele encontra algo novo", "texto": "Surge um artigo recente, e ele pergunta por mensagem: incluo no resumo?" },
+        { "marca": "21h", "titulo": "Você aprova pelo celular", "texto": "No dia seguinte, a versão revisada está pronta para o grupo." }
+      ],
+      "nota": "Exemplo ilustrativo, baseado nos casos de uso apresentados pela OpenAI no DevDay.",
+      "alt": "Linha do tempo ilustrativa de um dia de estudante com um Dot, às 9h, 15h e 21h."
+    },
+    {
+      "t": "cards", "papel": "impacto",
+      "titulo": "O que muda na sua rotina",
+      "itens": [
+        { "icone": "history", "titulo": "Menos retrabalho", "texto": "Ele continua de onde parou, sem você precisar explicar tudo de novo." },
+        { "icone": "message-circle", "titulo": "Você decide pelo celular", "texto": "Perguntas e aprovações chegam por mensagem, onde você estiver." },
+        { "icone": "shield-check", "titulo": "Você define os limites", "texto": "Escolhe os apps que ele pode usar e o que precisa da sua aprovação." }
+      ],
+      "src": ["f1"],
+      "alt": "Três mudanças na rotina: menos retrabalho, decisões pelo celular e limites definidos por você."
+    },
+    {
+      "t": "cards", "papel": "tensao",
+      "titulo": "Antes de delegar",
+      "itens": [
+        { "icone": "eye", "titulo": "Ele ainda erra", "texto": "A própria OpenAI recomenda revisar tudo o que for importante." },
+        { "icone": "lock", "titulo": "Algumas ações ficam com você", "texto": "Trocar senhas, por exemplo, continua sendo tarefa sua." },
+        { "icone": "clock", "titulo": "Ainda não chegou para todos", "texto": "Começa nos planos Pro e Business Premium; Edu e Enterprise em beta." }
+      ],
+      "src": ["f1"],
+      "alt": "Três cuidados: ele ainda erra, algumas ações ficam com você e o recurso ainda não chegou para todos."
+    },
+    {
+      "t": "fechamento", "papel": "cta",
+      "titulo": "E o que a Liga tem a ver com isso?",
+      "corpo": "Mais do que acompanhar cada novidade, o importante é entender o que muda na sua rotina, nos estudos e no trabalho.",
+      "destaque": { "eyebrow": "O papel da Liga News", "texto": "A gente acompanha.\nVocê entende o que importa." },
+      "cta": "Siga a gente para acompanhar",
+      "alt": "Fechamento: a Liga acompanha as novidades para você entender o que importa. Siga a Liga."
+    }
+  ],
+  "legenda": {
+    "texto": "OpenAI Dots: a IA que continua trabalhando depois que você fecha o chat. No DevDay, a OpenAI mostrou agentes que recebem um objetivo, avançam sozinhos e pedem sua aprovação pelo celular. Neste carrossel: o que é um Dot, como seria um dia com ele, o que muda na sua rotina e os cuidados antes de delegar. Siga a Liga para acompanhar a série News.",
+    "hashtags": ["#OpenAI", "#DevDay", "#AgentesDeIA", "#UFSCar"]
+  }
+}

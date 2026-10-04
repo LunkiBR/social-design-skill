@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+scripts/.saida/
+scripts/.publicado/
+runs/*
+!runs/.gitkeep
+acervo/referencias/**/*.png
+acervo/referencias/**/*.jpg
